@@ -1,45 +1,37 @@
-/*let age = 20;
-console.log("Age:", age);
-console.log("Type of age:", typeof age);
+function calculateResult(){
 
-let name = "Yash";
-console.log("Name:", name);
-console.log("Type of name:", typeof name);
+    let n=document.getElementById("subject").value;
+    let i;
+    let total=0;
+    let result;
+    for(i=1;i<=n;i++){
 
-let isStudent = true;
-console.log("Is Student:", isStudent);
-console.log("Type of isStudent:", typeof isStudent);
+        let x=parseFloat(prompt("enter the marks of Subject"+i));
 
-let x;
-console.log("Value of x:", x);
-console.log("Type of x:", typeof x);
-
-let y = null;
-console.log("Value of y:", y);
-console.log("Type of y:", typeof y);
-
-// symbol 
-const sym1 = Symbol(4);
-const sym2 = Symbol(4);
-
-console.log("Symbol 1:", sym1);
-console.log("Symbol 2:", sym2);
-
-
-if (sym1 === sym2) {
-    console.log("true");
-} else {
-    console.log("false"); 
-}*/
-
-
-// myfunction
-
-function myfunction(){
-    {
-        alert("hello world");
+        total+=x;
     }
-              
-                                
-            
+    let average=total/n;
+    let grade;
+    if(average>=90)
+      grade='A+';
+    else if(average>=80)
+        grade='A';
+    else if(average>=70)
+        grade='B+';
+    else if(average>=60)
+        grade='B';
+    else if(average>=50)
+        grade='C';
+    else
+        grade='F';
 
+
+    if(average>=50)
+        result="Pass";
+    else
+        result="Fail";
+
+
+
+    document.getElementById("result").innerHTML="Total Marks:"+total+"<br/>"+"Average Marks:"+average+"<br/>"+"Grade:"+grade+"<br/>"+"Result:"+result;
+}
