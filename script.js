@@ -1,76 +1,35 @@
-let employees = [];
-function addEmployee() {
-  let name = document.getElementById("name").value;
-  let id = document.getElementById("id").value;
-  let salary = Number(document.getElementById("salary").value);
-  let dept = document.getElementById("dept").value;
+// Change Heading
+document.getElementById("btn1").addEventListener("click", function() {
+    let text = document.getElementById("inputText").value;
+    document.getElementById("heading").innerText = text;
+});
 
-  let emp = {
-    name: name,
-    id: id,
-    salary: salary,
-    dept: dept
-  };
+// Change Background
+document.getElementById("btn2").addEventListener("click", function() {
+    document.body.style.backgroundColor = "#d4edda";
+});
 
-  employees.push(emp);
+// Increase Font Size
+document.getElementById("btn3").addEventListener("click", function() {
+    document.getElementById("heading").style.fontSize = "40px";
+});
 
-  alert("Employee Added!");
-}
+// Show/Hide Paragraph
+document.getElementById("btn4").addEventListener("click", function() {
+    let para = document.getElementById("para");
 
-function displayEmployees() {
-  let output = "";
-
-  for (let emp of employees) {
-    output += `${emp.name} | ${emp.id} | ₹${emp.salary} | ${emp.dept}<br>`;
-  }
-
-  document.getElementById("output").innerHTML = output;
-}
-
-function filterSalary() {
-  let filtered = employees.filter(emp => emp.salary > 50000);
-
-  let output = "";
-
-  for (let emp of filtered) {
-    output += `${emp.name} | ₹${emp.salary}<br>`;
-  }
-
-  document.getElementById("output").innerHTML = output;
-}
-
-function totalSalary() {
-  let total = 0;
-
-  for (let emp of employees) {
-    total += emp.salary;
-  }
-
-  document.getElementById("output").innerHTML = "Total Salary: ₹" + total;
-}
-
-function averageSalary() {
-  let total = 0;
-
-  for (let emp of employees) {
-    total += emp.salary;
-  }
-
-  let avg = total / employees.length;
-
-  document.getElementById("output").innerHTML = "Average Salary: ₹" + avg;
-}
-
-function countDepartment() {
-  let deptName = prompt("Enter Department Name:");
-  let count = 0;
-
-  for (let emp of employees) {
-    if (emp.dept.toLowerCase() === deptName.toLowerCase()) {
-      count++;
+    if (para.style.display === "none") {
+        para.style.display = "block";
+    } else {
+        para.style.display = "none";
     }
-  }
+});
 
-  document.getElementById("output").innerHTML =
-    "Employees in " + deptName + ": " + count;
-}
+// Reset Everything
+document.getElementById("btn5").addEventListener("click", function() {
+    document.getElementById("heading").innerText = "Welcome to JavaScript Lab";
+    document.body.style.backgroundColor = "#e0e0e0";
+    document.getElementById("heading").style.fontSize = "32px";
+    document.getElementById("para").style.display = "block";
+    document.getElementById("inputText").value = "";
+});
