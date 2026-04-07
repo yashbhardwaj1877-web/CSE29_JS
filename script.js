@@ -1,37 +1,76 @@
-function calculateResult(){
+let employees = [];
+function addEmployee() {
+  let name = document.getElementById("name").value;
+  let id = document.getElementById("id").value;
+  let salary = Number(document.getElementById("salary").value);
+  let dept = document.getElementById("dept").value;
 
-    let n=document.getElementById("subject").value;
-    let i;
-    let total=0;
-    let result;
-    for(i=1;i<=n;i++){
+  let emp = {
+    name: name,
+    id: id,
+    salary: salary,
+    dept: dept
+  };
 
-        let x=parseFloat(prompt("enter the marks of Subject"+i));
+  employees.push(emp);
 
-        total+=x;
+  alert("Employee Added!");
+}
+
+function displayEmployees() {
+  let output = "";
+
+  for (let emp of employees) {
+    output += `${emp.name} | ${emp.id} | ₹${emp.salary} | ${emp.dept}<br>`;
+  }
+
+  document.getElementById("output").innerHTML = output;
+}
+
+function filterSalary() {
+  let filtered = employees.filter(emp => emp.salary > 50000);
+
+  let output = "";
+
+  for (let emp of filtered) {
+    output += `${emp.name} | ₹${emp.salary}<br>`;
+  }
+
+  document.getElementById("output").innerHTML = output;
+}
+
+function totalSalary() {
+  let total = 0;
+
+  for (let emp of employees) {
+    total += emp.salary;
+  }
+
+  document.getElementById("output").innerHTML = "Total Salary: ₹" + total;
+}
+
+function averageSalary() {
+  let total = 0;
+
+  for (let emp of employees) {
+    total += emp.salary;
+  }
+
+  let avg = total / employees.length;
+
+  document.getElementById("output").innerHTML = "Average Salary: ₹" + avg;
+}
+
+function countDepartment() {
+  let deptName = prompt("Enter Department Name:");
+  let count = 0;
+
+  for (let emp of employees) {
+    if (emp.dept.toLowerCase() === deptName.toLowerCase()) {
+      count++;
     }
-    let average=total/n;
-    let grade;
-    if(average>=90)
-      grade='A+';
-    else if(average>=80)
-        grade='A';
-    else if(average>=70)
-        grade='B+';
-    else if(average>=60)
-        grade='B';
-    else if(average>=50)
-        grade='C';
-    else
-        grade='F';
+  }
 
-
-    if(average>=50)
-        result="Pass";
-    else
-        result="Fail";
-
-
-
-    document.getElementById("result").innerHTML="Total Marks:"+total+"<br/>"+"Average Marks:"+average+"<br/>"+"Grade:"+grade+"<br/>"+"Result:"+result;
+  document.getElementById("output").innerHTML =
+    "Employees in " + deptName + ": " + count;
 }
